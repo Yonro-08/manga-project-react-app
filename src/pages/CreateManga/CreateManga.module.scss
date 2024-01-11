@@ -1,0 +1,74 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.createChapter,
+.createManga {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 400px;
+  color: #fff;
+
+  .label {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    input {
+      padding: 10px 20px;
+      border: 1px solid #fff;
+      border-radius: 10px;
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.75);
+      }
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    textarea {
+      padding: 10px 20px;
+      border: 1px solid #fff;
+    }
+
+    select {
+      padding: 10px;
+      border: 1px solid #fff;
+      option {
+        padding: 10px;
+        background-color: var(--color-bg-primary);
+      }
+    }
+  }
+
+  .containerUploads {
+    display: flex;
+    gap: 10px;
+    .labelImg {
+      width: max-content;
+      height: max-content;
+      padding: 5px;
+      border: 1px solid #fff;
+      border-radius: 10px;
+      cursor: pointer;
+      input {
+        display: none;
+      }
+    }
+  }
+
+  .button {
+    align-self: flex-end;
+    width: max-content;
+    height: max-content;
+    padding: 10px;
+    background-color: var(--color-primary);
+    border-radius: 20px;
+  }
+}

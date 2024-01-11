@@ -1,0 +1,63 @@
+.container {
+  display: flex;
+  width: 100%;
+
+  .aboutContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .route {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: max-content;
+    margin: 8px;
+    margin-top: 0px;
+    height: 40px;
+    color: var(--color-text-primary);
+
+    .link {
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 8%;
+      bottom: 0;
+      width: 32%;
+      height: 2px;
+      border-radius: 4px;
+      background-color: var(--color-primary);
+      transition: all 0.3s ease;
+    }
+
+    a:hover {
+      background-color: rgba(255, 255, 255, 0.03);
+    }
+
+    &[data-active="about"] {
+      a:first-child {
+        color: var(--color-primary);
+      }
+      &::before {
+        left: 8%;
+      }
+    }
+    &[data-active="chapters"] {
+      a:last-child {
+        color: var(--color-primary);
+      }
+      &::before {
+        width: 36%;
+        left: 55%;
+      }
+    }
+  }
+}

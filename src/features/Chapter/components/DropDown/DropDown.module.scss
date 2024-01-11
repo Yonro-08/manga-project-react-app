@@ -1,0 +1,103 @@
+.dropdown {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	width: 100%;
+	padding: 8px 16px;
+	text-align: center;
+	cursor: pointer;
+
+	.list {
+		font-size: 12px;
+		color: #bebaac;
+
+		&::before {
+			position: absolute;
+			content: "";
+			left: 0;
+			bottom: 1px;
+			width: 100%;
+			height: 0px;
+			background: var(--color-primary);
+			transition: all 0.2s ease;
+		}
+		&:hover::before {
+			height: 5px;
+		}
+	}
+
+	.listPage {
+		width: 100%;
+		padding: 5px 8px;
+		white-space: nowrap;
+		font-size: 13px;
+		color: #bebaac;
+		transition: all 0.2s ease;
+		z-index: 1;
+		border-radius: 10px;
+
+		&:hover {
+			background: rgba(69, 66, 66, 0.2);
+		}
+	}
+
+	.burger {
+		position: absolute;
+		right: -4px;
+		left: 50%;
+		top: 100%;
+		width: max-content;
+		border-radius: 16px;
+		background-color: #222223;
+		opacity: 0;
+		transition: all 0.2s linear;
+		pointer-events: none;
+		transform: translate(-50%, 40px);
+		overflow: hidden;
+		z-index: 1;
+
+		.innerBurger {
+			padding: 16px 0;
+			min-width: 48px;
+			// max-height: 400px;
+			max-height: 300px;
+			overflow-y: auto;
+			background-color: #222223;
+
+			&::-webkit-scrollbar {
+				width: 10px;
+				height: 10px;
+				background: hsla(0, 0%, 55%, 0.2);
+			}
+			&::-webkit-scrollbar-thumb {
+				background: hsla(0, 0%, 55%, 0.7);
+				border-radius: 10px;
+			}
+			&::-webkit-scrollbar-track {
+				border-radius: 10px;
+			}
+		}
+
+		&[data-active="true"] {
+			opacity: 1;
+			pointer-events: auto;
+			transform: translate(-50%, 0px);
+		}
+
+		p {
+			display: block;
+			width: 100%;
+			padding: 12px 16px;
+			color: white;
+			transition: all 0.3s ease;
+			&:hover {
+				background: hsla(0, 0%, 55%, 0.1);
+			}
+			&[data-active="true"] {
+				background-color: var(--color-primary);
+			}
+		}
+	}
+}

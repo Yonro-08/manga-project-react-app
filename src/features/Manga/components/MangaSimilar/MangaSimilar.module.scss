@@ -1,0 +1,22 @@
+.container {
+  width: 250px;
+  padding-top: 20px;
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
+
+  .textContainer {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+
+    .text {
+      font-size: 20px;
+      line-height: 1.43;
+      color: var(--color-text-primary);
+    }
+  }
+}

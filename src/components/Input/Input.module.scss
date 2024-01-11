@@ -1,0 +1,19 @@
+.container {
+	display: block;
+	width: 100%;
+	padding: 0 12px;
+	border-radius: 16px;
+	color: var(--color-text-primary);
+	font-size: 16px;
+	opacity: 0.7;
+	background-color: var(--color-bg-input);
+
+	&:focus-within {
+		opacity: 1;
+	}
+
+	.input {
+		width: 100%;
+		padding: 11px 2px 13px;
+	}
+}

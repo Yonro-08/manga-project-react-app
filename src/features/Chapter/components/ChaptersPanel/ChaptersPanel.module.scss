@@ -1,0 +1,78 @@
+.image {
+	width: 21px;
+	height: 21px;
+	fill: var(--color-text-gray);
+}
+
+.chaptersPanel {
+	position: fixed;
+	top: -255%;
+	right: 100%;
+	width: 450px;
+	height: 101vh;
+	padding: 24px;
+	opacity: 0;
+	pointer-events: none;
+	padding-top: 84px;
+	background-color: var(--color-bg-secondary);
+	transition: all 0.5s ease;
+	cursor: default;
+
+	&[data-active="true"] {
+		opacity: 1;
+		pointer-events: auto;
+	}
+
+	.header {
+		display: flex;
+		justify-content: space-between;
+		gap: 10px;
+		margin-bottom: 10px;
+
+		.sort {
+			font-size: 11px;
+			line-height: normal;
+			color: var(--color-text-gray);
+			text-transform: uppercase;
+		}
+
+		.cross {
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 8px;
+
+			&::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				z-index: 0;
+				background: var(--bg-inverse);
+				opacity: 0;
+				border-radius: 4px;
+			}
+
+			&:hover::before {
+				opacity: 0.04;
+				background-color: var(--color-primary-light);
+			}
+
+			svg {
+				width: 24px;
+				height: 24px;
+				fill: var(--color-primary-light);
+				z-index: 1;
+			}
+		}
+	}
+
+	.chapters {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+}

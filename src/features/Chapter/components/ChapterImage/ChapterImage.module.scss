@@ -1,0 +1,12 @@
+.chapterImage {
+	.image {
+		object-position: top;
+
+		&[src=""] {
+			display: none;
+		}
+	}
+	.button {
+		padding: 0px;
+	}
+}

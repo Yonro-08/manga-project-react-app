@@ -1,0 +1,29 @@
+.container {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: max-content;
+
+	.burger {
+		position: absolute;
+		right: -3px;
+		width: 100%;
+		height: max-content;
+		border-radius: 16px;
+		opacity: 0;
+		transition: all 0.2s linear;
+		pointer-events: none;
+
+		&[data-is-burger-on-top="false"] {
+			top: 100%;
+			transform: translateY(-10px);
+		}
+
+		&[data-active="true"] {
+			opacity: 1;
+			pointer-events: auto;
+			transform: translateY(20px);
+		}
+	}
+}

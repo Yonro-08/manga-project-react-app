@@ -1,0 +1,68 @@
+.bookmarksPage {
+	margin-top: 32px;
+	color: var(--color-text-primary);
+	.title {
+		padding: 8px 0;
+		font-size: 38px;
+		font-weight: 500;
+		@media (max-width: 600px) {
+			font-size: 28px;
+		}
+	}
+
+	.sorts {
+		display: flex;
+		flex-wrap: nowrap;
+		overflow-x: auto;
+		margin-bottom: 8px;
+
+		&::-webkit-scrollbar {
+			width: 0px;
+		}
+
+		.sortELem {
+			position: relative;
+			display: flex;
+			align-items: center;
+			height: 40px;
+			padding: 6px 12px;
+			font-size: 12px;
+			text-wrap: nowrap;
+			line-height: 1.5;
+			text-transform: uppercase;
+
+			&::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				z-index: 0;
+				background: var(--color-bg-inverse);
+				opacity: 0;
+				border-radius: 8px;
+				transition: all 0.3s ease;
+			}
+
+			&:hover::before {
+				opacity: 0.04;
+			}
+		}
+
+		.active {
+			color: var(--color-primary);
+		}
+	}
+
+	.cards {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(140px, max-content));
+		column-gap: 8px;
+		row-gap: 12px;
+
+		@media (max-width: 320px) {
+			justify-content: center;
+		}
+	}
+}

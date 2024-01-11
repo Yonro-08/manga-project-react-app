@@ -1,0 +1,36 @@
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: end;
+	flex: 1;
+	gap: 16px;
+	height: 100%;
+
+	.nav {
+		height: 100%;
+	}
+
+	.button {
+		display: flex;
+		align-items: center;
+		svg {
+			width: 24px;
+			height: 24px;
+			fill: var(--color-text-secondary);
+			transition: all 0.3s ease;
+		}
+
+		&:hover {
+			svg {
+				fill: var(--color-primary);
+			}
+		}
+	}
+
+	.enterProfile {
+		padding: 8px 16px;
+		color: var(--color-text-on-primary);
+		background-color: var(--color-primary);
+		border-radius: 24px;
+	}
+}

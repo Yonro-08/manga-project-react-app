@@ -1,0 +1,25 @@
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 56px;
+	background-color: var(--color-bg-paper);
+	z-index: 9;
+
+	.container {
+		display: flex;
+		justify-content: space-between;
+		gap: 20px;
+		width: 100%;
+		height: 100%;
+
+		.leftContent {
+			display: flex;
+			align-items: center;
+			gap: 16px;
+			height: 100%;
+		}
+	}
+}

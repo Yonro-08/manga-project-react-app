@@ -1,0 +1,16 @@
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	margin-bottom: 24px;
+
+	.forgot {
+		align-self: flex-end;
+		width: max-content;
+		margin-bottom: 12px;
+		font-size: 14px;
+		font-weight: 600;
+		color: var(--color-primary-light);
+		cursor: pointer;
+	}
+}
