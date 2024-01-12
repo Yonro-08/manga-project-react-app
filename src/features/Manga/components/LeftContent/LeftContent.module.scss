@@ -3,7 +3,9 @@
 	width: clamp(230px, 33vw, 250px);
 
 	.container {
-		position: fixed;
+		position: absolute;
+		top: 0;
+		left: 0;
 		width: clamp(230px, 33vw, 250px);
 		display: flex;
 		flex-direction: column;

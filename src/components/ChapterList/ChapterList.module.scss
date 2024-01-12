@@ -16,6 +16,13 @@
 		grid-template-columns: max-content max-content 1fr 1fr max-content;
 	}
 
+	@media (max-width: 1024px) {
+		grid-template-areas:
+			"tom number . 	likes"
+			"tom date . likes";
+		grid-template-columns: max-content max-content 1fr max-content;
+	}
+
 	&[data-active="true"] {
 		background-color: var(--color-primary);
 	}

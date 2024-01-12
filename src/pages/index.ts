@@ -1,4 +1,5 @@
 import BookmarksPage from "./BookmarksPage";
+import CatalogPage from "./CatalogPage";
 import ChapterPage from "./ChapterPage";
 import CreateManga from "./CreateManga/CreateManga";
 import HomePage from "./HomePage";
@@ -7,6 +8,7 @@ import ProfilePage from "./ProfilePage";
 
 export {
 	BookmarksPage,
+	CatalogPage,
 	ChapterPage,
 	CreateManga,
 	HomePage,

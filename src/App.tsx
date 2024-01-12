@@ -8,7 +8,7 @@ import ScrollToTop from "components/ScrollToTop";
 import { useAuth } from "hooks/zustand/useAuth";
 import { useModal } from "hooks/zustand/useModal";
 import { getLocalStorage } from "utils/localStorage";
-import { Router } from "./navigation/AppNavigation";
+import { Router } from "./router/Router";
 
 import "@fontsource-variable/exo-2";
 import "./global.scss";

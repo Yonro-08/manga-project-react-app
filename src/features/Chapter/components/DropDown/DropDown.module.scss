@@ -58,6 +58,13 @@
 		overflow: hidden;
 		z-index: 1;
 
+		&[data-pages="true"] {
+			@media (max-width: 1080px) {
+				top: auto;
+				bottom: 100%;
+			}
+		}
+
 		.innerBurger {
 			padding: 16px 0;
 			min-width: 48px;

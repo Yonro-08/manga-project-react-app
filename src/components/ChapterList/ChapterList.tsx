@@ -33,6 +33,7 @@ const ChapterList = ({
 		if (setIsActive) {
 			setIsActive(false);
 		}
+
 		navigate(
 			`/manga/${endpoint}/chapters?chapter=${chapter?.chapterNum}&page=1`
 		);
@@ -46,7 +47,10 @@ const ChapterList = ({
 				<>
 					{/* <div className={c.ChapterAuthor}>Ханами</div> */}
 					<div className={c.ChapterDate}>{date}</div>
-					<div className={c.ChapterLikes}>
+					<div
+						className={c.ChapterLikes}
+						onClick={(event) => event.stopPropagation()}
+					>
 						<HeartOutlineIcon />
 						<p>0</p>
 					</div>

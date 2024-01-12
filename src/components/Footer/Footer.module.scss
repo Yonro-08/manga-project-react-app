@@ -1,0 +1,114 @@
+.footer {
+	padding: 40px 0;
+	color: var(--color-text-primary);
+
+	.container {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 20px;
+
+		@media (max-width: 800px) {
+			flex-direction: column;
+			flex-wrap: nowrap;
+			gap: 0;
+		}
+	}
+
+	.content {
+		width: max-content;
+
+		@media (max-width: 800px) {
+			margin: 16px 0;
+		}
+		.title {
+			margin-bottom: 8px;
+			font-size: 20px;
+			font-weight: 600;
+			line-height: 1.235;
+		}
+		.desc {
+			margin-bottom: 8px;
+			font-size: 14px;
+			line-height: 1.43;
+			color: var(--color-text-secondary);
+		}
+
+		.mail {
+			margin-top: 16px;
+			margin-bottom: 4px;
+
+			span {
+				display: block;
+				font-size: 16px;
+				line-height: 1.66;
+
+				&:first-of-type {
+					color: var(--color-text-secondary);
+				}
+			}
+		}
+
+		.copyright {
+			margin-top: 16px;
+			font-size: 12px;
+			line-height: 1.66;
+			color: var(--color-text-secondary);
+		}
+	}
+
+	.sections {
+		width: max-content;
+
+		@media (max-width: 800px) {
+			margin: 16px 0;
+		}
+		.title {
+			margin-bottom: 16px;
+			font-size: 14px;
+			text-transform: uppercase;
+		}
+		.list {
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+			font-size: 12px;
+			line-height: 1.66;
+			color: var(--color-text-secondary);
+			transition: color 0.3 ease;
+			text-wrap: nowrap;
+		}
+		.list li:hover {
+			color: var(--color-primary);
+		}
+	}
+
+	.contact {
+		width: 260px;
+		h3 {
+			margin-bottom: 1.6rem;
+			font-size: 0.75rem;
+			font-weight: 500;
+		}
+		p {
+			color: var(--color-text-secondary);
+			font-size: 0.6rem;
+		}
+	}
+	.social {
+		display: flex;
+		flex-wrap: nowrap;
+		gap: 0.4rem;
+		margin-bottom: 0.8rem;
+		svg {
+			fill: currentColor;
+			display: inline-block;
+			width: 24px;
+			height: 24px;
+			font-size: 1.5rem;
+			transition: fill 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+			flex-shrink: 0;
+			user-select: none;
+		}
+	}
+}

@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Layout from "../components/Layout";
 import {
 	BookmarksPage,
+	CatalogPage,
 	ChapterPage,
 	CreateManga,
 	HomePage,
@@ -19,6 +20,7 @@ export const Router = () => {
 				<Route path="/manga/create" element={<CreateManga />} />
 				<Route path="/profile" element={<ProfilePage />} />
 				<Route path="/bookmark" element={<BookmarksPage />} />
+				<Route path="/catalog" element={<CatalogPage />} />
 			</Route>
 			<Route path="/manga/:endpoint/chapters" element={<ChapterPage />} />
 		</Routes>

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getLocalStorage } from "utils/localStorage";
 
-const url = process.env.REACT_APP_PORT;
+const url = process.env.REACT_APP_PORT || "http://localhost:8080";
 
 const instance = axios.create({
 	baseURL: `${url}/api`,

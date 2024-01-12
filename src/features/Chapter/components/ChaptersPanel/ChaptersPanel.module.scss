@@ -5,11 +5,11 @@
 }
 
 .chaptersPanel {
-	position: fixed;
-	top: -255%;
+	position: absolute;
+	top: 0;
 	right: 100%;
 	width: 450px;
-	height: 101vh;
+	height: 100%;
 	padding: 24px;
 	opacity: 0;
 	pointer-events: none;
@@ -17,6 +17,17 @@
 	background-color: var(--color-bg-secondary);
 	transition: all 0.5s ease;
 	cursor: default;
+	overflow: hidden;
+
+	@media (max-width: 1080px) {
+		position: fixed;
+		top: 0;
+		left: 0;
+		bottom: 69px;
+		right: 0;
+		width: 100%;
+		height: auto;
+	}
 
 	&[data-active="true"] {
 		opacity: 1;

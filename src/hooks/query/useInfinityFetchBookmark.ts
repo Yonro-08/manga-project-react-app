@@ -3,7 +3,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { getBookmark } from "lib/api/bookmark";
 import { BookmarkData } from "types/Auth";
 
-const useInfinityFetchBookmark = (category: string, take = 5) => {
+const useInfinityFetchBookmark = (category: string, take = 14) => {
 	return useInfiniteQuery<BookmarkData[], Error, { pages: BookmarkData[] }>({
 		queryKey: ["bookmark", category],
 		// @ts-ignore

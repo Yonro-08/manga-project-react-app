@@ -56,9 +56,14 @@ const DropDown = ({
 				<div className={c.listPage}>
 					{pageQuery}/{pagesOptions.length}
 				</div>
-				<div className={c.burger} data-active={isActive} ref={refBurger}>
+				<div
+					className={c.burger}
+					data-active={isActive}
+					ref={refBurger}
+					data-pages
+				>
 					<div className={c.innerBurger}>
-						{pagesOptions.map((option, index) => (
+						{pagesOptions.map((_option, index) => (
 							<p
 								key={index}
 								data-active={index + 1 === pageQuery}
@@ -82,7 +87,11 @@ const DropDown = ({
 		return (
 			<div className={c.dropdown} onClick={handleClick} ref={ref}>
 				<div className={c.list}>
-					{options[chapterQuery - 1]?.chapterTom} - {chapterQuery}
+					{
+						options.find((options) => chapterQuery === options.chapterNum)
+							?.chapterTom
+					}{" "}
+					- {chapterQuery}
 				</div>
 				<div className={c.burger} data-active={isActive} ref={refBurger}>
 					<div className={c.innerBurger}>
