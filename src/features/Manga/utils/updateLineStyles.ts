@@ -8,8 +8,6 @@ export const updateLineStyles = (
 
 	if (page) {
 		const buttonRect = linkRef.getBoundingClientRect();
-		console.log(buttonRect);
-		console.log(navigationReact);
 
 		lineRef.style.transform = `translateX(${
 			buttonRect.left - navigationReact.left + 16

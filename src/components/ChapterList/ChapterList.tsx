@@ -1,9 +1,18 @@
-import { Dispatch, SetStateAction } from "react";
+import {
+	Dispatch,
+	MouseEvent,
+	SetStateAction,
+	useEffect,
+	useState,
+} from "react";
 import { useNavigate } from "react-router-dom";
 
+import { useAuth } from "hooks/zustand/useAuth";
 import { HeartOutlineIcon } from "icons";
+import { postLike } from "lib/api/manga";
 import { ChapterProps } from "types/Manga";
 
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import c from "./ChapterList.module.scss";
 
 interface ChapterPropsHere {
@@ -22,6 +31,17 @@ const ChapterList = ({
 	setIsActive,
 }: ChapterPropsHere) => {
 	const navigate = useNavigate();
+	const { user } = useAuth();
+	const [isLike, setIsLike] = useState(false);
+	const [count, setCount] = useState(chapter.liked.length);
+
+	const queryClient = useQueryClient();
+
+	const mutationLike = useMutation<boolean, Error>({
+		mutationFn: () => {
+			return postLike(endpoint, chapter.chapterNum);
+		},
+	});
 
 	const date = chapter?.createChapter
 		.split("T")[0]
@@ -39,6 +59,22 @@ const ChapterList = ({
 		);
 	};
 
+	useEffect(() => {
+		const like = chapter.liked.find((like) => like === user?._id);
+		if (like) {
+			setIsLike(true);
+		}
+	}, [user]);
+
+	const handleLiked = async (event: MouseEvent<HTMLDivElement>) => {
+		event.stopPropagation();
+		setIsLike(true);
+		setCount((prev) => prev + 1);
+		mutationLike.mutateAsync().then(() => {
+			queryClient.refetchQueries({ queryKey: ["manga", endpoint] });
+		});
+	};
+
 	return (
 		<div className={c.container} onClick={handleClick} data-active={chapterNow}>
 			<div className={c.ChapterTom}>1</div>
@@ -47,12 +83,9 @@ const ChapterList = ({
 				<>
 					{/* <div className={c.ChapterAuthor}>Ханами</div> */}
 					<div className={c.ChapterDate}>{date}</div>
-					<div
-						className={c.ChapterLikes}
-						onClick={(event) => event.stopPropagation()}
-					>
-						<HeartOutlineIcon />
-						<p>0</p>
+					<div className={c.ChapterLikes} onClick={handleLiked}>
+						<HeartOutlineIcon fill={isLike ? "orange" : "transparent"} />
+						<p>{count}</p>
 					</div>
 				</>
 			)}

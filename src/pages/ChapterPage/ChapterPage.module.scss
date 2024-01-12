@@ -1,20 +1,21 @@
 .chapter {
-  width: 100vw;
-  min-height: 100vh;
-  margin-top: 56px;
+	width: 100vw;
+	min-height: 100vh;
+	margin-top: 56px;
+	padding-bottom: 50px;
 
-  .container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+	.container {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		width: 100%;
 
-    .image {
-      object-position: top;
+		.image {
+			object-position: top;
 
-      &[src=""] {
-        display: none;
-      }
-    }
-  }
+			&[src=""] {
+				display: none;
+			}
+		}
+	}
 }

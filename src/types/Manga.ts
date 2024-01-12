@@ -17,6 +17,7 @@ export interface ChapterProps {
 	chapterImage: string[];
 	views: string;
 	createChapter: string;
+	liked: string[];
 }
 
 export interface MangaProps {

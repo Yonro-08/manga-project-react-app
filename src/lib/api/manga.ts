@@ -14,3 +14,12 @@ export const getMangaByEndpoint = async (
 	const result = await axios.get(path);
 	return result.data;
 };
+
+export const postLike = async (
+	endpoint: string,
+	chapterNum: number
+): Promise<boolean> => {
+	const path = `/manga/liked`;
+	const result = await axios.post(path, { endpoint, chapterNum });
+	return result.data;
+};

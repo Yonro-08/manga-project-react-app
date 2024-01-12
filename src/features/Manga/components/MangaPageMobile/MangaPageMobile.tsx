@@ -6,6 +6,7 @@ import { useEffect, useRef } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import MangaAbout from "../MangaAbout";
 import MangaChapters from "../MangaChapters";
+
 import c from "./MangaPageMobile.module.scss";
 
 interface MangaPageMobileProps {}

@@ -18,7 +18,7 @@ const MangaPage = () => {
 
 	useEffect(() => {
 		getManga(data);
-	}, [isLoading]);
+	}, [isLoading, data]);
 
 	if (width < 700) {
 		return <MangaPageMobile />;
