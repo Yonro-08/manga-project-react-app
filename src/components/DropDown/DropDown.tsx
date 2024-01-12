@@ -9,6 +9,7 @@ interface DropDownProps {
 	value: ReactNode;
 	burgerContent: ReactNode;
 	isBurgerOnTop?: boolean;
+	isProfile?: boolean;
 }
 
 const DropDown = ({
@@ -17,6 +18,7 @@ const DropDown = ({
 	value,
 	burgerContent,
 	isBurgerOnTop = false,
+	isProfile = false,
 }: DropDownProps) => {
 	const [isActive, setIsActive] = useState<boolean>(false);
 	const [position, setPosition] = useState<"bottom" | "top">("top");
@@ -62,6 +64,7 @@ const DropDown = ({
 			)}
 			onClick={handleClick}
 			ref={ref}
+			data-profile={isProfile}
 		>
 			{value}
 			<div
@@ -69,6 +72,7 @@ const DropDown = ({
 				ref={refBurger}
 				data-is-burger-on-top={isBurgerOnTop}
 				data-active={isActive}
+				data-profile={isProfile}
 				style={
 					isBurgerOnTop
 						? {

@@ -5,8 +5,8 @@ import { updateLineStyles } from "features/Manga/utils/updateLineStyles";
 import { useManga } from "hooks/zustand/useManga";
 import MangaAbout from "../MangaAbout";
 import MangaChapters from "../MangaChapters";
-import MangaSimilar from "../MangaSimilar";
 
+import MangaSimilar from "../MangaSimilar";
 import c from "./RightContentBody.module.scss";
 
 const RightContentBody = () => {

@@ -15,15 +15,36 @@
 		transition: all 0.2s linear;
 		pointer-events: none;
 
-		&[data-is-burger-on-top="false"] {
-			top: 100%;
-			transform: translateY(-10px);
+		@media (min-width: 801px) {
+			&[data-is-burger-on-top="false"] {
+				top: 100%;
+				transform: translateY(-10px);
+			}
+
+			&[data-active="true"] {
+				opacity: 1;
+				pointer-events: auto;
+				transform: translateY(20px);
+			}
 		}
 
-		&[data-active="true"] {
-			opacity: 1;
-			pointer-events: auto;
-			transform: translateY(20px);
+		@media (max-width: 800px) {
+			&[data-profile="true"] {
+				position: fixed;
+				top: 0px;
+				right: 0;
+				bottom: 0;
+				height: 100%;
+				width: 300px;
+				border-radius: 0px;
+				transform: translateX(300px);
+			}
+
+			&[data-active="true"] {
+				opacity: 1;
+				pointer-events: auto;
+				transform: translateX(0px);
+			}
 		}
 	}
 }

@@ -33,6 +33,7 @@ const HeaderNavRight = () => {
 				<DropDown
 					value={<ProfileImage avatar={user.avatar} />}
 					burgerContent={<BurgerMenu user={user} />}
+					isProfile
 				/>
 			) : (
 				<button className={c.enterProfile} onClick={openModal}>

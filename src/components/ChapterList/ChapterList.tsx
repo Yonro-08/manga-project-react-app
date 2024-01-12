@@ -1,3 +1,4 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import {
 	Dispatch,
 	MouseEvent,
@@ -12,7 +13,6 @@ import { HeartOutlineIcon } from "icons";
 import { postLike } from "lib/api/manga";
 import { ChapterProps } from "types/Manga";
 
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import c from "./ChapterList.module.scss";
 
 interface ChapterPropsHere {

@@ -1,3 +1,4 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import {
 	Dispatch,
 	MouseEvent,
@@ -6,39 +7,49 @@ import {
 	useMemo,
 	useState,
 } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 import {
 	handleTransitionPagesNext,
 	handleTransitionPagesPrev,
 } from "features/Chapter";
-import useFetchManga from "hooks/query/useFetchManga";
-import { useManga } from "hooks/zustand/useManga";
+import { useAuth } from "hooks/zustand/useAuth";
+import { HeartOutlineIcon } from "icons";
+import { postLike } from "lib/api/manga";
 import ChapterButton from "../ChapterButton/ChapterButton";
 
+import { MangaProps } from "types/Manga";
 import c from "./ChapterImage.module.scss";
 
 interface ChapterImageProps {
 	setIsHiding: Dispatch<SetStateAction<boolean>>;
+	manga: MangaProps;
+	endpoint: string;
 }
 
-function ChapterImage({ setIsHiding }: ChapterImageProps) {
-	const { endpoint } = useParams();
+function ChapterImage({ setIsHiding, manga, endpoint }: ChapterImageProps) {
+	const [image, setImage] = useState("");
+	const [isLike, setIsLike] = useState(false);
+	const [count, setCount] = useState(0);
+
 	const [searchParams, _setSearchParams] = useSearchParams();
+
+	const { user } = useAuth();
+	const queryClient = useQueryClient();
+
 	const pageQuery = Number(searchParams.get("page")) || 0;
 	const chapterQuery = Number(searchParams.get("chapter")) || 0;
-	const [image, setImage] = useState("");
 
-	const { getManga } = useManga();
-	const { data, isLoading } = useFetchManga(endpoint);
-
-	useEffect(() => {
-		getManga(data);
-	}, [isLoading]);
-
-	const chapter = data?.chapters.find(
+	const chapter = manga?.chapters.find(
 		(chapter) => chapter.chapterNum === chapterQuery
 	);
+
+	const mutationLike = useMutation<boolean, Error>({
+		mutationFn: () => {
+			if (!chapter) return new Promise((res) => res(false));
+			return postLike(endpoint, chapter.chapterNum);
+		},
+	});
 
 	useEffect(() => {
 		setImage("");
@@ -49,14 +60,25 @@ function ChapterImage({ setIsHiding }: ChapterImageProps) {
 		})();
 	}, [pageQuery, chapter]);
 
-	const handleTransitionPagesNextMemoized = useMemo(() => {
-		if (!data || !chapter) return;
+	useEffect(() => {
+		setIsLike(false);
+		if (!chapter) return;
 
+		setCount(chapter.liked.length);
+		const like = chapter.liked.find((like) => like === user?._id);
+
+		if (like) {
+			setIsLike(true);
+		}
+	}, [user, chapterQuery]);
+
+	const handleTransitionPagesNextMemoized = useMemo(() => {
+		if (!chapter) return;
 		return handleTransitionPagesNext(
 			pageQuery,
 			chapterQuery,
 			endpoint,
-			data,
+			manga,
 			chapter
 		);
 	}, [pageQuery, chapterQuery, setImage, image]);
@@ -67,12 +89,21 @@ function ChapterImage({ setIsHiding }: ChapterImageProps) {
 		setIsHiding((prev) => !prev);
 	};
 
+	const handleLiked = async (event: MouseEvent<HTMLDivElement>) => {
+		event.stopPropagation();
+		setIsLike(true);
+		setCount((prev) => prev + 1);
+		mutationLike.mutateAsync().then(() => {
+			queryClient.refetchQueries({ queryKey: ["manga", endpoint] });
+		});
+	};
+
 	return (
 		<div className={c.chapterImage} onClick={handleClick}>
-			{!isLoading && chapter && data && (
+			{chapter && (
 				<>
 					{!(
-						chapterQuery === data?.chapters[0].chapterNum && pageQuery === 1
+						chapterQuery === manga?.chapters[0].chapterNum && pageQuery === 1
 					) && (
 						<ChapterButton
 							className={c.button}
@@ -86,6 +117,15 @@ function ChapterImage({ setIsHiding }: ChapterImageProps) {
 						to={handleTransitionPagesNextMemoized || ""}
 						dataPosition="right"
 					/>
+					{chapter.chapterImage.length === pageQuery && (
+						<div className={c.likeContainer}>
+							<div className={c.like} onClick={handleLiked}>
+								<HeartOutlineIcon fill={isLike ? "orange" : "transparent"} />
+								<p>Спасибо</p>
+							</div>
+							<span>Сказали спасибо {count}</span>
+						</div>
+					)}
 				</>
 			)}
 		</div>

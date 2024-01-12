@@ -6,12 +6,14 @@ import { useAuth } from "hooks/zustand/useAuth";
 import { authRegister } from "lib/api/auth";
 import { setLocalStorage } from "utils/localStorage";
 
+import { useModal } from "hooks/zustand/useModal";
 import c from "./RegisterForm.module.scss";
 
 interface RegisterForm {}
 
 function RegisterForm() {
 	const { setUser } = useAuth();
+	const { closeModal } = useModal();
 	const [registerValue, setRegisterValue] = useState({
 		username: "",
 		password: "",
@@ -30,6 +32,7 @@ function RegisterForm() {
 		const response = await authRegister(registerValue);
 		setLocalStorage("token", response.token);
 		setUser(response);
+		closeModal();
 	};
 
 	return (

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import ProfileImage from "components/ProfileImage";
 import SwitchTheme from "components/SwitchTheme";
 import { useAuth } from "hooks/zustand/useAuth";
+import { BookmarkIcon } from "icons";
 import ExitIcon from "icons/ExitIcon";
 import { UserData } from "types/Auth";
 import { removeLocalStorage } from "utils/localStorage";
@@ -30,6 +31,12 @@ function BurgerMenu({ user }: BurgerMenu) {
 				</div>
 				<span className={c.title}>{user.username}</span>
 			</Link>
+			<li>
+				<Link to="/bookmark" className={c.bookmark}>
+					<span>Закладки</span>
+					<BookmarkIcon />
+				</Link>
+			</li>
 			<li>
 				<span>Изменить тему</span>
 				<SwitchTheme />

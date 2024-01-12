@@ -11,7 +11,7 @@ const HotNew = () => {
 			<div className="container">
 				<div className={c.container}>
 					<h3 className={c.title}>Горячие новинки</h3>
-					<button className={c.link}>Больше</button>
+					{/* <button className={c.link}>Больше</button> */}
 				</div>
 				{!isLoading && data && <Slider data={data} width />}
 			</div>

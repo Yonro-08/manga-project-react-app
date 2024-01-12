@@ -5,12 +5,12 @@ import { useNavigate } from "react-router-dom";
 
 import { MangaCard } from "features/Bookmarks";
 import { CATEGORYDATA } from "features/Bookmarks/constans/CATEGORYDATA";
+import useFetchBookmarkTotalLength from "hooks/query/useFetchBookmarkTotalLength";
 import useInfinityFetchBookmark from "hooks/query/useInfinityFetchBookmark";
 import { useAuth } from "hooks/zustand/useAuth";
 import { useModal } from "hooks/zustand/useModal";
 import { checkAuth } from "utils/checkAuth";
 
-import useFetchBookmarkTotalLength from "hooks/query/useFetchBookmarkTotalLength";
 import c from "./BookmarksPage.module.scss";
 
 function BookmarksPage() {
@@ -73,9 +73,13 @@ function BookmarksPage() {
 				</div>
 				{!isLoading && (
 					<div className={c.cards}>
-						{bookmarksData?.map((data, index) => (
-							<MangaCard key={index} data={data} />
-						))}
+						{bookmarksData.length > 0 ? (
+							bookmarksData?.map((data, index) => (
+								<MangaCard key={index} data={data} />
+							))
+						) : (
+							<div className={c.noBookmark}>Нет ни одной закладки</div>
+						)}
 						{!isLoading && !isFetchingNextPage && hasNextPage && (
 							<InView
 								as="div"
