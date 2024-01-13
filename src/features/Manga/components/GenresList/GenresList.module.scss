@@ -1,0 +1,22 @@
+.genresContainer {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+	width: 100%;
+
+	.genre {
+		padding: 7px 12px;
+		color: var(--color-text-primary);
+		font-size: 14px;
+		line-height: 1;
+		background-color: hsla(240, 4%, 49%, 0.07);
+		border-radius: 12px;
+	}
+
+	.button {
+		padding: 7px 12px;
+		color: var(--color-primary);
+		font-size: 14px;
+		line-height: 1;
+	}
+}

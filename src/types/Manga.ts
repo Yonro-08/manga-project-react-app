@@ -34,6 +34,7 @@ export interface MangaProps {
 	content: string;
 	typeManga: string;
 	year: string;
+	genres: string[];
 	createdAt: string;
 	updatedAt: string;
 	activeCategory: string;

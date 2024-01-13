@@ -6,7 +6,6 @@ import ProfileImage from "components/ProfileImage";
 import SwitchTheme from "components/SwitchTheme";
 import { useAuth } from "hooks/zustand/useAuth";
 import { useModal } from "hooks/zustand/useModal";
-import { SettingIcon } from "icons";
 
 import { getLocalStorage } from "utils/localStorage";
 import c from "./HeaderNavRight.module.scss";
@@ -30,11 +29,11 @@ const HeaderNavRight = ({ isChapter }: HeaderNavRightProps) => {
 				</ul>
 			</nav>
 			{!isAuth && <SwitchTheme />}
-			{!isChapter && (
+			{/* {!isChapter && (
 				<button className={c.button}>
 					<SettingIcon />
 				</button>
-			)}
+			)} */}
 			{isAuth && user ? (
 				<DropDown
 					value={<ProfileImage avatar={user.avatar} />}

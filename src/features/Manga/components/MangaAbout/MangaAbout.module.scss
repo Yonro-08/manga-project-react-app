@@ -1,56 +1,42 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  padding: 12px 16px;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	padding: 12px 16px;
 
-  .textContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    width: 100%;
-    margin-bottom: 32px;
-  }
+	.textContainer {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		width: 100%;
+		margin-bottom: 32px;
+	}
 
-  .text {
-    height: max-content;
-    color: var(--color-text-primary);
-    font-size: 16px;
-    line-height: 1.6;
+	.text {
+		height: max-content;
+		color: var(--color-text-primary);
+		font-size: 16px;
+		line-height: 1.6;
 
-    &[data-text-column="true"] {
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 4;
-      overflow: hidden;
-    }
-  }
+		&[data-text-column="true"] {
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 4;
+			overflow: hidden;
+		}
+	}
 
-  .textMore {
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    line-height: 1.5;
-    color: var(--color-text-secondary);
+	.textMore {
+		display: flex;
+		align-items: center;
+		font-size: 16px;
+		line-height: 1.5;
+		color: var(--color-text-secondary);
 
-    svg {
-      width: 24px;
-      height: 24px;
-      fill: var(--color-text-secondary);
-    }
-  }
-
-  .genresContainer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-    width: 100%;
-
-    .genre {
-      padding: 7px 12px;
-      color: var(--color-text-primary);
-      background-color: hsla(240, 4%, 49%, 0.07);
-      border-radius: 12px;
-    }
-  }
+		svg {
+			width: 24px;
+			height: 24px;
+			fill: var(--color-text-secondary);
+		}
+	}
 }

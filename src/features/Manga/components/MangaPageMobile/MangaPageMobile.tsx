@@ -145,8 +145,8 @@ function MangaPageMobile({}: MangaPageMobileProps) {
 						<div className={c.line} ref={lineRef}></div>
 					</div>
 				</div>
-				{pQuery === "about" ? (
-					<MangaAbout content={manga?.content} />
+				{manga && pQuery === "about" ? (
+					<MangaAbout content={manga?.content} genres={manga.genres} />
 				) : (
 					<MangaChapters
 						chapters={manga?.chapters}

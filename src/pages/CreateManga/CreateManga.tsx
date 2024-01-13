@@ -22,6 +22,7 @@ function CreateManga() {
 		content: "",
 		typeManga: "Манга",
 		year: "",
+		genres: "",
 	});
 
 	const uploadImage = async (image: File) => {
@@ -29,7 +30,7 @@ function CreateManga() {
 		formData.append("image", image);
 
 		const response = await fetch(
-			"https://api.imgbb.com/1/upload?key=8020732b7dbca9f5e97f007e60b4ff70",
+			"https://api.imgbb.com/1/upload?key=60bebf1ab88a080084936eceed03b5ea",
 			{
 				method: "POST",
 				body: formData,
@@ -220,6 +221,16 @@ function CreateManga() {
 								value={manga.year}
 								onChange={(event) =>
 									setManga({ ...manga, year: event.target.value })
+								}
+							/>
+						</label>
+						<label className={c.label}>
+							Жанры:
+							<input
+								type="text"
+								value={manga.genres}
+								onChange={(event) =>
+									setManga({ ...manga, genres: event.target.value })
 								}
 							/>
 						</label>

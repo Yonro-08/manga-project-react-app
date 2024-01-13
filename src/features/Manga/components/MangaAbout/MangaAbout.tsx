@@ -1,24 +1,16 @@
 import { Fragment, useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
 
 import { ArrowDown } from "icons";
 
+import GenresList from "../GenresList";
 import c from "./MangaAbout.module.scss";
 
 interface MangaAboutProps {
-	content?: string;
-	genres?: string[];
+	content: string;
+	genres: string[];
 }
 
-const MangaAbout = (props: MangaAboutProps) => {
-	const Genres = [
-		"Экшен",
-		"Элементы юмора",
-		"Приключения",
-		"Романтика",
-		"Сверхъестественное",
-		"Фэнтези",
-	];
+const MangaAbout = ({ content, genres }: MangaAboutProps) => {
 	const textRef = useRef<HTMLDivElement>(null);
 	const [showFullText, setShowFullText] = useState<boolean>(false);
 
@@ -31,13 +23,13 @@ const MangaAbout = (props: MangaAboutProps) => {
 			const textHeight = textRef.current.clientHeight;
 			setShowFullText(textHeight > lineHeight * 4);
 		}
-	}, [textRef.current, props.content]);
+	}, [textRef.current, content]);
 
 	return (
 		<div className={c.container}>
 			<div className={c.textContainer}>
 				<div ref={textRef} className={c.text} data-text-column={showFullText}>
-					{props?.content?.split("\n").map((line, index) => (
+					{content?.split("\n").map((line, index) => (
 						<Fragment key={index}>
 							{line}
 							<br />
@@ -56,15 +48,7 @@ const MangaAbout = (props: MangaAboutProps) => {
 					</button>
 				)}
 			</div>
-			<div className={c.genresContainer}>
-				{Genres.map((genre, index) => {
-					return (
-						<Link key={index} to={`/catalog?${genre}`} className={c.genre}>
-							{genre}
-						</Link>
-					);
-				})}
-			</div>
+			<GenresList genres={genres} />
 		</div>
 	);
 };
