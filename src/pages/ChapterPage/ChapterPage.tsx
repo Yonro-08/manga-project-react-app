@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 import { ChapterHeader, ChapterImage, ChapterSetting } from "features/Chapter";
-
 import useFetchManga from "hooks/query/useFetchManga";
+import useResize from "hooks/useResize";
 import { useManga } from "hooks/zustand/useManga";
-import { useParams } from "react-router-dom";
+
 import c from "./ChapterPage.module.scss";
 
 const ChapterPage = () => {
 	const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
 	const [isHiding, setIsHiding] = useState(false);
+	const width = useResize();
 
 	const { endpoint } = useParams();
 	const { getManga } = useManga();
@@ -20,14 +22,16 @@ const ChapterPage = () => {
 	}, [isLoading]);
 
 	useEffect(() => {
-		const handleScroll = () => {
-			const currentScrollPos = window.pageYOffset;
-			setIsHiding(prevScrollPos < currentScrollPos && currentScrollPos > 56);
-			setPrevScrollPos(currentScrollPos);
-		};
+		if (width > 1080) {
+			const handleScroll = () => {
+				const currentScrollPos = window.pageYOffset;
+				setIsHiding(prevScrollPos < currentScrollPos && currentScrollPos > 56);
+				setPrevScrollPos(currentScrollPos);
+			};
 
-		window.addEventListener("scroll", handleScroll);
-		return () => window.removeEventListener("scroll", handleScroll);
+			window.addEventListener("scroll", handleScroll);
+			return () => window.removeEventListener("scroll", handleScroll);
+		}
 	}, [prevScrollPos, isHiding]);
 
 	return (

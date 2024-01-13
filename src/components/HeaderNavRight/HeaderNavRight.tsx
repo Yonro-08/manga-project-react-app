@@ -11,7 +11,11 @@ import { SettingIcon } from "icons";
 import { getLocalStorage } from "utils/localStorage";
 import c from "./HeaderNavRight.module.scss";
 
-const HeaderNavRight = () => {
+interface HeaderNavRightProps {
+	isChapter?: boolean;
+}
+
+const HeaderNavRight = ({ isChapter }: HeaderNavRightProps) => {
 	const { openModal } = useModal();
 	const isAuth = getLocalStorage("isAuthInitialized") === "true";
 	const { user } = useAuth();
@@ -26,9 +30,11 @@ const HeaderNavRight = () => {
 				</ul>
 			</nav>
 			{!isAuth && <SwitchTheme />}
-			<button className={c.button}>
-				<SettingIcon />
-			</button>
+			{!isChapter && (
+				<button className={c.button}>
+					<SettingIcon />
+				</button>
+			)}
 			{isAuth && user ? (
 				<DropDown
 					value={<ProfileImage avatar={user.avatar} />}

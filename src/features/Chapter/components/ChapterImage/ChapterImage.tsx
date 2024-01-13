@@ -16,9 +16,9 @@ import {
 import { useAuth } from "hooks/zustand/useAuth";
 import { HeartOutlineIcon } from "icons";
 import { postLike } from "lib/api/manga";
+import { MangaProps } from "types/Manga";
 import ChapterButton from "../ChapterButton/ChapterButton";
 
-import { MangaProps } from "types/Manga";
 import c from "./ChapterImage.module.scss";
 
 interface ChapterImageProps {

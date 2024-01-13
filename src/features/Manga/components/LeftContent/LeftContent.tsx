@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import Button from "components/Button";
 import DropDown from "components/DropDown/DropDown";
@@ -10,9 +11,10 @@ import c from "./LeftContent.module.scss";
 interface LeftContentProps {
 	src: string;
 	category: string;
+	endpoint: string;
 }
 
-const LeftContent = ({ src, category }: LeftContentProps) => {
+const LeftContent = ({ src, category, endpoint }: LeftContentProps) => {
 	const [value, setValue] = useState(category);
 
 	return (
@@ -22,7 +24,12 @@ const LeftContent = ({ src, category }: LeftContentProps) => {
 					<img src={src} alt="" />
 				</div>
 				<div className={c.buttons}>
-					<button className={c.link}>Читать</button>
+					<Link
+						to={`/manga/${endpoint}/chapters?chapter=1&page=1`}
+						className={c.link}
+					>
+						Читать
+					</Link>
 					<DropDown
 						classContainer={c.button}
 						classBurger={c.burger}

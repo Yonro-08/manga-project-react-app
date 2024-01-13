@@ -22,7 +22,7 @@ function ChapterSetting({ isHiding }: ChapterSetting) {
 	);
 
 	return (
-		<ul className={c.chapterSetting}>
+		<ul className={c.chapterSetting} data-active={isHiding}>
 			<li>
 				<DropDown isHiding={isHiding} pagesOptions={chapter?.chapterImage} />
 			</li>

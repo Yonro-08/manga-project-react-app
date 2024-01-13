@@ -1,9 +1,12 @@
 import { useManga } from "hooks/zustand/useManga";
 
+import Button from "components/Button";
+import DropDown from "components/DropDown";
 import { updateLineStyles } from "features/Manga/utils/updateLineStyles";
-import { HeartIcon, StarIcon } from "icons";
-import { useEffect, useRef } from "react";
+import { ArrowRight, HeartIcon, StarIcon } from "icons";
+import { useEffect, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
+import BookmarkMenu from "../BookmarkMenu";
 import MangaAbout from "../MangaAbout";
 import MangaChapters from "../MangaChapters";
 
@@ -12,17 +15,26 @@ import c from "./MangaPageMobile.module.scss";
 interface MangaPageMobileProps {}
 
 function MangaPageMobile({}: MangaPageMobileProps) {
+	const [value, setValue] = useState("");
+	const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
+
 	const [searchParams, setSearchParams] = useSearchParams();
 	const pQuery = searchParams.get("p") || "";
 	const navigationRef = useRef<HTMLDivElement>(null);
 	const aboutRef = useRef<HTMLAnchorElement>(null);
 	const chapterRef = useRef<HTMLAnchorElement>(null);
 	const lineRef = useRef<HTMLDivElement>(null);
+	const buttonRef = useRef<HTMLDivElement>(null);
 	const { manga } = useManga();
 
 	useEffect(() => {
 		setSearchParams({ p: "about" });
 	}, []);
+
+	useEffect(() => {
+		if (!manga) return;
+		setValue(manga?.activeCategory);
+	}, [manga]);
 
 	useEffect(() => {
 		if (
@@ -53,6 +65,23 @@ function MangaPageMobile({}: MangaPageMobileProps) {
 		navigationRef.current,
 		manga,
 	]);
+
+	useEffect(() => {
+		const handleScroll = () => {
+			if (!buttonRef.current) return;
+			const currentScrollPos = window.pageYOffset;
+			if (currentScrollPos === 0) {
+				buttonRef.current.style.display = "none";
+			}
+			if (currentScrollPos > 0) {
+				buttonRef.current.style.display = "flex";
+			}
+			setPrevScrollPos(currentScrollPos);
+		};
+
+		window.addEventListener("scroll", handleScroll);
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, [prevScrollPos, buttonRef.current]);
 
 	if (!manga) return null;
 
@@ -124,6 +153,30 @@ function MangaPageMobile({}: MangaPageMobileProps) {
 						endpoint={manga?.endpoint}
 					/>
 				)}
+			</div>
+			<div className={c.buttons} ref={buttonRef}>
+				<Link
+					to={`/manga/${manga.endpoint}/chapters?chapter=1&page=1`}
+					className={c.link}
+				>
+					Читать
+				</Link>
+				<DropDown
+					classContainer={c.button}
+					classBurger={c.burger}
+					value={
+						<Button>
+							<svg focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+								<path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z"></path>
+							</svg>
+							<ArrowRight className={c.arrow} />
+						</Button>
+					}
+					burgerContent={
+						<BookmarkMenu activeCategory={value} setValue={setValue} />
+					}
+					isBurgerOnTop
+				/>
 			</div>
 		</div>
 	);

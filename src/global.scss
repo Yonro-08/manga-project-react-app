@@ -157,6 +157,10 @@ p[data-text-column="2"] {
 
 	&[data-chapter] {
 		max-width: 900px;
+
+		@media (max-width: 1080px) {
+			padding: 0;
+		}
 	}
 }
 

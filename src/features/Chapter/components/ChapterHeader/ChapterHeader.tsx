@@ -50,7 +50,28 @@ const ChapterHeader = ({ isHiding }: ChapterHeaderProps) => {
 							</a>
 						</li>
 					</ul>
-					<HeaderNavRight />
+					<HeaderNavRight isChapter />
+					<div className={c.tabs}>
+						<div className={c.back}>
+							<ArrowLeft />К тайтлу
+						</div>
+						<ul className={`${c.headerList} headerList`}>
+							<li>
+								<a>
+									<ArrowLeft />
+								</a>
+							</li>
+							{manga && (
+								<DropDown options={manga.chapters} isHiding={isHiding} />
+							)}
+							<li>
+								<a>
+									<ArrowRight />
+								</a>
+							</li>
+						</ul>
+						<div></div>
+					</div>
 				</div>
 			</div>
 		</header>

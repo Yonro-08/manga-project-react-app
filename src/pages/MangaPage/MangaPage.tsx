@@ -27,9 +27,13 @@ const MangaPage = () => {
 	return (
 		<section className={c.manga}>
 			<div className="container">
-				{!isLoading && data && (
+				{!isLoading && data && endpoint && (
 					<div className={c.container}>
-						<LeftContent src={data?.url} category={data?.activeCategory} />
+						<LeftContent
+							src={data?.url}
+							category={data?.activeCategory}
+							endpoint={endpoint}
+						/>
 						<RightContent />
 					</div>
 				)}

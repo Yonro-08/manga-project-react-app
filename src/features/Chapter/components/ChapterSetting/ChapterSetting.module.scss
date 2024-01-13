@@ -17,7 +17,17 @@
 		bottom: 0;
 		left: 0;
 		height: max-content;
+		opacity: 0;
+		pointer-events: none;
 		background-color: var(--color-bg-paper);
+		transform: translateY(70px);
+		transition: all 0.3s ease;
+
+		&[data-active="true"] {
+			opacity: 1;
+			pointer-events: auto;
+			transform: translateY(0px);
+		}
 	}
 
 	.menuButtons {
