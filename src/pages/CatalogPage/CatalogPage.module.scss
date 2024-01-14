@@ -1,3 +1,19 @@
 .catalogPage {
-  
+	padding: 16px 8px;
+	color: var(--color-text-primary);
+
+	.title {
+		margin-bottom: 16px;
+		font-size: 28px;
+		font-weight: 500;
+		line-height: 1.167;
+	}
+
+	.cards {
+		display: grid;
+		justify-content: space-between;
+		grid-template-columns: repeat(auto-fit, minmax(156px, 1fr));
+		gap: 4px;
+		row-gap: 10px;
+	}
 }

@@ -4,7 +4,7 @@ import Slider from "../Slider";
 import c from "./HotNew.module.scss";
 
 const HotNew = () => {
-	const { data, isLoading } = useFetchMangaList();
+	const { data, isLoading } = useFetchMangaList("news", 20);
 
 	return (
 		<section className={c.hotNew}>

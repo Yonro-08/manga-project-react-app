@@ -10,8 +10,13 @@
 		width: 136px;
 	}
 
-	&[data-width] {
+	&[data-width="true"] {
 		width: clamp(80px, 24vw, 156px);
+	}
+
+	&[data-catalog="true"] {
+		max-width: 180px;
+		width: 100%;
 	}
 
 	.image {

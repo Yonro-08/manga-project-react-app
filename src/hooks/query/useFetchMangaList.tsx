@@ -2,11 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 
 import { getMangaList } from "lib/api/manga";
 
-const useFetchMangaList = () => {
+const useFetchMangaList = (category: string, limit?: number) => {
 	return useQuery({
-		queryKey: ["mangaList"],
+		queryKey: ["mangaList", category],
 		queryFn: () => {
-			return getMangaList();
+			return getMangaList(category, limit);
 		},
 	});
 };

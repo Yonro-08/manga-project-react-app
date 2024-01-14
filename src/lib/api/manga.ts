@@ -1,8 +1,15 @@
 import axios from "lib/axios";
 import { MangaListProps, MangaProps } from "types/Manga";
 
-export const getMangaList = async (): Promise<MangaListProps[]> => {
-	const path = `/manga`;
+export const getMangaList = async (
+	category: string,
+	limit?: number
+): Promise<MangaListProps[]> => {
+	const params = new URLSearchParams({
+		category: category.toString(),
+	}).toString();
+
+	const path = `/manga?${params}${limit ? `&limit=${limit}` : ""}`;
 	const result = await axios.get(path);
 	return result.data;
 };

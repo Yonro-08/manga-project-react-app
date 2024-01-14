@@ -8,15 +8,17 @@ import c from "./MangaItem.module.scss";
 const MangaItem = ({
 	manga,
 	width,
+	isCatalog,
 }: {
 	manga: MangaListProps;
 	width?: boolean;
+	isCatalog?: boolean;
 }) => {
 	const { endpoint, title, typeManga, url } = manga;
 
 	return (
 		<Link to={`/manga/${endpoint}?p=about`}>
-			<div className={c.container} data-width={width}>
+			<div className={c.container} data-width={width} data-catalog={isCatalog}>
 				<img className={c.image} src={url} alt="" />
 				<div className={c.bodyContainer}>
 					<p className={c.type}>{typeManga}</p>
