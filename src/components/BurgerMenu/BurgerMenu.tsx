@@ -25,13 +25,13 @@ function BurgerMenu({ user }: BurgerMenu) {
 
 	return (
 		<ul className={c.burgerMenu}>
-			<Link to={"/profile"} className={c.header}>
+			<div className={c.header}>
 				<div className={c.profileImage}>
 					<ProfileImage avatar={user.avatar} />
 				</div>
 				<span className={c.title}>{user.username}</span>
-			</Link>
-			<li>
+			</div>
+			<li className={c.catalogContainer}>
 				<Link to="/catalog" className={c.catalog}>
 					<span>Каталог</span>
 					<svg focusable="false" viewBox="0 0 24 24" aria-hidden="true">
@@ -39,7 +39,7 @@ function BurgerMenu({ user }: BurgerMenu) {
 					</svg>
 				</Link>
 			</li>
-			<li>
+			<li className={c.bookmarkContainer}>
 				<Link to="/bookmark" className={c.bookmark}>
 					<span>Закладки</span>
 					<BookmarkIcon />

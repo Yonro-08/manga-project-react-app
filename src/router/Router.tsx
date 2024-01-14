@@ -10,7 +10,6 @@ import {
 	DmcaPage,
 	HomePage,
 	MangaPage,
-	ProfilePage,
 	RulesPage,
 } from "../pages";
 
@@ -21,7 +20,7 @@ export const Router = () => {
 				<Route index element={<HomePage />} />
 				<Route path="/manga/:endpoint" element={<MangaPage />} />
 				<Route path="/manga/create" element={<CreateManga />} />
-				<Route path="/profile" element={<ProfilePage />} />
+				{/* <Route path="/profile" element={<ProfilePage />} /> */}
 				<Route path="/bookmark" element={<BookmarksPage />} />
 				<Route path="/catalog" element={<CatalogPage />} />
 				<Route path="/rules" element={<RulesPage />} />
