@@ -48,7 +48,8 @@ function BookmarksPage() {
 		fetchNextPage();
 	};
 
-	if (isCategoryDataLoading) return null;
+	if (!categoryData)
+		return <div className={c.noBookmark}>Нет ни одной закладки</div>;
 
 	return (
 		<section className={c.bookmarksPage}>

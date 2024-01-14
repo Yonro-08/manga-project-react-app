@@ -20,8 +20,8 @@
 	overflow: hidden;
 
 	@media (max-width: 1080px) {
-		position: fixed;
-		top: 0;
+		position: absolute;
+		top: auto;
 		left: 0;
 		bottom: 69px;
 		right: 0;
