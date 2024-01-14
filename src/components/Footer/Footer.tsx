@@ -2,9 +2,7 @@ import { Link } from "react-router-dom";
 
 import c from "./Footer.module.scss";
 
-interface FooterProps {}
-
-function Footer({}: FooterProps) {
+function Footer() {
 	return (
 		<footer className={c.footer}>
 			<div className="container">
@@ -18,28 +16,27 @@ function Footer({}: FooterProps) {
 						<p className={c.desc}>Читать мангу онлайн</p>
 						<div className={c.mail}>
 							<span>Почта для связи:</span>
-							<span>contact@remanga.org</span>
+							<span>quatroyondime@gmail.com</span>
 						</div>
-						<p className={c.copyright}>remanga.org © 2023</p>
+						<p className={c.copyright}>
+							manga-project-react-app.vercel.app © 2024
+						</p>
 					</div>
 					<div className={c.sections}>
 						<h3 className={c.title}>РАЗДЕЛЫ</h3>
 						<ul className={c.list}>
 							<li>
-								<a href="#">ПРАВИЛА САЙТА</a>
+								<Link to="/rules">ПРАВИЛА САЙТА</Link>
 							</li>
 							<li>
-								<a href="#">DMCA</a>
+								<Link to="/dmca">DMCA</Link>
 							</li>
 							<li>
-								<a href="#">АВТОРСКОЕ ПРАВО</a>
-							</li>
-							<li>
-								<a href="#">О НАС</a>
+								<Link to="/about-us">О НАС</Link>
 							</li>
 						</ul>
 					</div>
-					<div className={c.sections}>
+					{/* <div className={c.sections}>
 						<h3 className={c.title}>ИНФО</h3>
 						<ul className={c.list}>
 							<li>
@@ -55,7 +52,7 @@ function Footer({}: FooterProps) {
 								<a href="#">FAQ</a>
 							</li>
 						</ul>
-					</div>
+					</div> */}
 					<div className={c.contact}>
 						<h3 className={c.title}>КОНТАКТЫ</h3>
 						<div className={c.social}>

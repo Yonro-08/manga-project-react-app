@@ -1,0 +1,11 @@
+.aboutPage {
+	padding-top: 46px;
+	color: var(--color-text-primary);
+
+	.container {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		font-size: 18px;
+	}
+}
